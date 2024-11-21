@@ -1,0 +1,316 @@
+<html>
+
+<!-- Header & Header links Fragments -->
+
+<!-- /.Header & Header links Fragment -->
+
+<!-- Header & Header links Fragments -->
+<head th:fragment="head">
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--<title> Project Management</title>-->
+<link rel="icon" type="image/png" href="/vkc-logo.png" />
+<!-- Google Font: Source Sans Pro -->
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet"/>
+
+ <!-- DataTables -->
+  <link rel="stylesheet" href="/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+
+  
+   <!-- Date Picker -->
+  <!--<link rel="stylesheet" href="/dist/css/bootstrap-datepicker.min.css"> -->
+  
+<!-- Theme style -->
+<link rel="stylesheet" href="/dist/css/adminlte.min.css">
+
+<!-- Tempusdominus Bootstrap 4 -->
+  <link rel="stylesheet" href="/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+<!-- Select2 -->
+  <link rel="stylesheet" href="/plugins/select2/css/select2.min.css">
+    <link rel="stylesheet" href="/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+<script src="https://momentjs.com/downloads/moment-timezone-with-data-1970-2030.js"></script>
+
+<style>
+
+.select2-container--default .select2-purple .select2-results__option--highlighted[aria-selected], .select2-container--default .select2-purple .select2-results__option--highlighted[aria-selected]:hover, .select2-purple .select2-container--default .select2-results__option--highlighted[aria-selected], .select2-purple .select2-container--default .select2-results__option--highlighted[aria-selected]:hover {
+    background-color: #36c8e8;
+    color: #fff;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+	 background-color: #36c8e8;
+    color: #fff;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice__display {
+	 background-color: #36c8e8;
+    color: #fff;
+}
+
+body{
+	    font-family: "Nunito Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+	    font-size: 0.8rem;
+}
+/* body{
+font-family: "Poppins",;
+font-size:0.9125rem;
+font-weight:400;
+line-height: 1.5;
+    text-align: var(--vz-body-text-align);
+  	 background-color: #f3f3f9;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+
+}*/ 
+[class*=sidebar-dark-] {
+    
+  background: -webkit-linear-gradient(to right, #2980b9, #6dd5fa); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #2980b9, #6dd5fa); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+[class*=sidebar-dark-] .sidebar a {
+     color: #F6F6F6;/**color: black;/*#f1f1f1*/
+}
+[class*=sidebar-dark-] .nav-treeview>.nav-item>.nav-link {
+   /* color: #ffffff;*/
+   /*color: black;*/
+   color: #F6F6F6;
+}
+[class*=sidebar-dark] .brand-link {
+    border-bottom: 0px solid #F6F6F6;
+}
+
+[class*=sidebar-dark-] .nav-header, .nav-header :hover {
+    background-color: inherit;
+    /*color: #d0d4db;*/
+      color: white;
+}
+table {
+    border-collapse: collapse;
+}
+
+.align-middle {
+    vertical-align: middle!important;
+}
+.btn-danger {
+    color: #fff;
+    background-color: #f06548;
+    border-color: #f06548;
+}
+.btn-danger-icon {
+    color: rgb(243, 105, 105);
+    border-color: #f06548;
+}
+.btn-warning-icon {
+    color: rgb(255, 177, 0);
+    border-color: #f06548;
+}
+
+.btn-success-icon {
+    color: rgb(94, 184, 100);
+    border-color: #f06548;
+}
+
+.btn-danger:hover {
+    color: #fff;
+    background-color: #cc563d;
+    border-color: #c0513a;
+}
+.btn-success {
+    color: #fff;
+    background-color: #0ab39c;
+    border-color: #0ab39c;
+}
+
+.leftDesc {
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	display: inline-block;
+	overflow: hidden;
+	float: left;
+	height: 20px;
+	max-width: 160px;
+}
+.text-uppercase {
+	text-transform: uppercase !important;
+}
+.badge-success{
+font-weight: 500;
+background-color:#0AB29D !important;
+}
+
+.badge-danger{
+color:white !important;
+background-color:#F16448 !important;
+}
+.badge-warning{
+color:white !important;
+background-color:#F7B94A !important;
+}
+
+.badge-info{
+color:white !important;
+background-color:rgb(128, 128, 192) !important;
+}
+
+.font-medium {
+	font-weight: 500;
+	color: #878a99 !important;
+}
+
+
+.badge {
+    display: inline-block;
+    padding: 0.35em 0.65em;
+    font-size: .75em;
+    font-weight: 600;
+    line-height: 1;
+    
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 0.25rem;
+}
+.badge-soft-warning {
+    color: #f7b84b;
+    background-color: rgba(247,184,75,.1);
+}
+.badge-soft-danger {
+    color: #f06548;
+    background-color: rgba(240,101,72,.1);
+}
+.badge-soft-success {
+    color: #0ab39c;
+    background-color: rgba(10,179,156,.1);
+}
+.badge-soft-secondary {
+    color: #3577f1;
+    background-color: rgba(53,119,241,.1);
+}
+
+    .content-header {
+    padding: 5px 0.5rem;
+}
+   
+/* style="box-shadow: 5px 5px 20px #C1DBFE; border-radius:10px;"*/
+</style>
+</head>
+<!-- /.Header & Header links Fragment -->
+
+
+<!-- Top Nav Bar -->
+<nav class="main-header navbar navbar-expand navbar-white navbar-light" th:fragment="TopNavBar (titles,url)">
+
+	<img src="/vkc-logo.png" height="50px;" />
+
+	<h4 class="ml-3 mt-3 text-bold" th:utext="${titles}" style="color:blue;"></h4>
+	
+	<ul class="navbar-nav ml-auto">
+		<!-- Navbar Search -->
+		<li class="nav-item mt-2"><a th:href="${url}" style="color:black; border-radius:5px;"><i class="fa fa-home"></i> Home</a></li>
+		<li class="nav-item"><a href="#" class="nav-link">      </a></li>
+	</ul>
+	
+	
+	
+	
+</nav>
+
+<!-- Main Footer -->
+<footer class="main-footer" th:fragment="main-footer">
+	<div class="float-right d-none d-sm-block">
+		<b>Version</b> 1.0.0
+	</div>
+	<strong>Copyright &copy; <span id="CurrentYear"></span> All rights reserved. <img src="/dist/img/vkc-sm.png"> <a href="https://www.vkc.com/" target="_blank">vkc</a>
+	</strong> 
+</footer>
+<!-- /*  Main  Footer -->
+
+
+<!--  Footer Links -->
+<div th:fragment="footer-links">
+	<!-- jQuery -->
+	<script src="/plugins/jquery/jquery.min.js"></script>
+	
+	<!-- dropzone Js -->
+	 <script src="/plugins/dropzone/min/dropzone.min.js"></script>
+	 
+	<!-- Bootstrap 4 -->
+	<script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+	
+<!-- Tempusdominus Bootstrap 4 -->
+<script src="/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+	
+	<!-- DataTables  & Plugins -->
+	<script src="/plugins/datatables/jquery.dataTables.min.js"></script>
+	<script src="/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+	<script
+		src="/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+	<script
+		src="/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+	<script src="/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+	<script src="/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+	<script src="/plugins/jszip/jszip.min.js"></script>
+	<script src="/plugins/pdfmake/pdfmake.min.js"></script>
+	<script src="/plugins/pdfmake/vfs_fonts.js"></script>
+	<script src="/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+	<script src="/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+	<script src="/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+	<!-- AdminLTE App -->
+	<script src="/dist/js/adminlte.min.js"></script>
+	<!-- AdminLTE for demo purposes -->
+	<script src="/dist/js/demo.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script>
+  $(function () {
+    $("#example2,#example3,#example4,#example5").DataTable({
+      "responsive": true, 
+      "lengthChange": false, 
+      "autoWidth": false,
+      "paging": true,
+      "lengthChange": false,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+       "buttons": [
+		    // { extend: 'copyHtml5', footer: true },
+		     { extend: 'excelHtml5', footer: true },
+		     { extend: 'csvHtml5', footer: true },
+		     { extend: 'pdfHtml5', footer: true }
+		     //{ extend:  'colvis', footer: true }
+
+		 ]
+     // "buttons": ["csv", "excel", "pdf", "print"],
+      //"sDom": '<"row view-filter"<"col-sm-12"<"pull-left"l><"pull-right"f><"clearfix">>>t<"row view-pager"<"col-sm-12"<"text-center"ip>>>',
+      //, "colvis" , "copy", 
+    }).buttons().container().appendTo('#example2_wrapper .col-md-6:eq(0) ,#example3_wrapper .col-md-6:eq(0),#example4_wrapper .col-md-6:eq(0)');
+  });
+  $(function () {
+	  $('#reservation').daterangepicker({
+			format : 'DD/MM/YYYY'
+
+		});
+	  $('#reservation').val("");
+  })
+   $(function () {
+             $('#totalHoursTimePicker').datetimepicker({format: 'HH:mm'});
+             });
+</script>
+<script>
+$('.select2').select2();
+</script>
+
+
+</div>
+
+<!-- /. Footer Links -->
+
+</html>

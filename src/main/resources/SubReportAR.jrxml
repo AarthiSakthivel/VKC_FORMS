@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.21.3.final using JasperReports Library version 6.21.3-4a3078d20785ebe464f18037d738d12fc98c13cf  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SubReportAR" pageWidth="273" pageHeight="121" columnWidth="273" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="8b01e3bc-fd1d-4efd-96b1-f259c5d09342">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MySql"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<parameter name="documentNo" class="java.lang.String"/>
+	<parameter name="companyCode" class="java.lang.String"/>
+	<parameter name="fiscalYear" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT *
+FROM credit_tax_details
+WHERE 
+	 credit_tax_details.accounting_document = $P{documentNo} 
+	 AND credit_tax_details.company_code = $P{companyCode}
+	 AND credit_tax_details.fiscal_year= $P{fiscalYear}]]>
+	</queryString>
+	<field name="id" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="id"/>
+		<property name="com.jaspersoft.studio.field.label" value="id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="credit_tax_details"/>
+	</field>
+	<field name="credit_entity_id" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="credit_entity_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="credit_entity_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="credit_tax_details"/>
+	</field>
+	<field name="cgst_rate" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="cgst_rate"/>
+		<property name="com.jaspersoft.studio.field.label" value="cgst_rate"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="credit_tax_details"/>
+	</field>
+	<field name="cgst_amount" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="cgst_amount"/>
+		<property name="com.jaspersoft.studio.field.label" value="cgst_amount"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="credit_tax_details"/>
+	</field>
+	<field name="sgst_amount" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="sgst_amount"/>
+		<property name="com.jaspersoft.studio.field.label" value="sgst_amount"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="credit_tax_details"/>
+	</field>
+	<field name="igst_amount" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="igst_amount"/>
+		<property name="com.jaspersoft.studio.field.label" value="igst_amount"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="credit_tax_details"/>
+	</field>
+	<field name="totaltax" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="totaltax"/>
+		<property name="com.jaspersoft.studio.field.label" value="totaltax"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="credit_tax_details"/>
+	</field>
+	<field name="taxablevalue" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="taxablevalue"/>
+		<property name="com.jaspersoft.studio.field.label" value="taxablevalue"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="credit_tax_details"/>
+	</field>
+	<field name="totalcalculation" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="totalcalculation"/>
+		<property name="com.jaspersoft.studio.field.label" value="totalcalculation"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="credit_tax_details"/>
+	</field>
+	<field name="invoicetotal" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="invoicetotal"/>
+		<property name="com.jaspersoft.studio.field.label" value="invoicetotal"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="credit_tax_details"/>
+	</field>
+	<field name="line_amount" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="line_amount"/>
+		<property name="com.jaspersoft.studio.field.label" value="line_amount"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="credit_tax_details"/>
+	</field>
+	<field name="line_of_sum_amount" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="line_of_sum_amount"/>
+		<property name="com.jaspersoft.studio.field.label" value="line_of_sum_amount"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="credit_tax_details"/>
+	</field>
+	<field name="gst_Tax_Rate" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="gst_Tax_Rate"/>
+		<property name="com.jaspersoft.studio.field.label" value="gst_Tax_Rate"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="credit_tax_details"/>
+	</field>
+	<field name="gst_Tax_Amount" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="gst_Tax_Amount"/>
+		<property name="com.jaspersoft.studio.field.label" value="gst_Tax_Amount"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="credit_tax_details"/>
+	</field>
+	<field name="over_all_total_tax" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="over_all_total_tax"/>
+		<property name="com.jaspersoft.studio.field.label" value="over_all_total_tax"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="credit_tax_details"/>
+	</field>
+	<field name="accounting_document" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="accounting_document"/>
+		<property name="com.jaspersoft.studio.field.label" value="accounting_document"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="credit_tax_details"/>
+	</field>
+	<field name="fiscal_year" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="fiscal_year"/>
+		<property name="com.jaspersoft.studio.field.label" value="fiscal_year"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="credit_tax_details"/>
+	</field>
+	<field name="company_code" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="company_code"/>
+		<property name="com.jaspersoft.studio.field.label" value="company_code"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="credit_tax_details"/>
+	</field>
+	<field name="gst_Heading" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="gst_Heading"/>
+		<property name="com.jaspersoft.studio.field.label" value="gst_Heading"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="credit_tax_details"/>
+	</field>
+	<columnHeader>
+		<band height="22">
+			<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.FreeLayout"/>
+			<staticText>
+				<reportElement x="1" y="1" width="49" height="20" uuid="c768bc51-9c63-46c4-84cf-3aeff2ad8ef5"/>
+				<box topPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true" pdfFontName="Helvetica-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[ Tax Breakup]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="48" y="2" width="50" height="20" uuid="326f0549-2dd2-4d3a-80b7-bb151aebe104"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true" pdfFontName="Helvetica-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[SGST]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="97" y="2" width="52" height="20" uuid="5462dff5-eb5b-4c67-956c-6f50625e8aa2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true" pdfFontName="Helvetica-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[CGST]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="147" y="2" width="46" height="20" uuid="7f1f1601-82c0-489d-bef9-f0c9e15772d6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true" pdfFontName="Helvetica-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[IGST]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="194" y="2" width="36" height="20" uuid="e2748512-7401-4c13-b2f1-fc8c556fd0ea"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true" pdfFontName="Helvetica-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[UTGST]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="232" y="2" width="40" height="20" uuid="791871bb-ed7c-40c5-b424-11707bfb7a3d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true" pdfFontName="Helvetica-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[ Total Tax]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="1" width="271" height="1" uuid="cce496ba-7f66-4fef-8c71-9da9cdd7d146"/>
+			</line>
+			<line>
+				<reportElement x="49" y="1" width="1" height="21" uuid="fe0aa2b1-71a2-4d34-b114-f869f515cf2d"/>
+			</line>
+			<line>
+				<reportElement x="1" y="20" width="271" height="1" uuid="d0a7e1a4-59dc-48cb-8b1b-daee2a09c62f"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="16">
+			<textField pattern="#,##0.00">
+				<reportElement x="50" y="1" width="47" height="14" uuid="7bfd1783-977a-483a-b24f-1ef57548f351">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9626eab3-bbf3-4093-a75c-16ac7784175d"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box rightPadding="2"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true" pdfFontName="Helvetica-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sgst_amount}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="98" y="1" width="49" height="14" uuid="745fbb96-7b60-4370-9e49-4a57f47c0c23">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8bf35b39-8668-4008-b773-bc4c95b42e42"/>
+				</reportElement>
+				<box rightPadding="2"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true" pdfFontName="Helvetica-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cgst_amount}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="149" y="1" width="45" height="14" uuid="cb1f71ed-31fc-42ac-a376-a581575f8453">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a589f7b8-eefb-45fc-8d55-081ea70213ff"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box rightPadding="2"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true" pdfFontName="Helvetica-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{igst_amount}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="1" width="1" height="15" uuid="2c684464-0c7f-4bca-8349-a3409de08d2e"/>
+			</line>
+			<line>
+				<reportElement x="49" y="-1" width="1" height="17" uuid="a3dd739b-acc2-4dfb-8d30-61966c678b6f"/>
+			</line>
+			<line>
+				<reportElement x="97" y="0" width="1" height="16" uuid="7a9bf787-19ad-4d62-b749-8fe9e1c34b80"/>
+			</line>
+			<line>
+				<reportElement x="147" y="-1" width="1" height="17" uuid="6f369cab-d71d-4504-9a0a-e57de3b10813"/>
+			</line>
+			<line>
+				<reportElement x="193" y="0" width="1" height="15" uuid="16025e7d-6d59-4b12-9e6c-ded09321e765"/>
+			</line>
+			<line>
+				<reportElement x="231" y="1" width="1" height="15" uuid="6b7be212-e8ee-40a5-a25d-766b69693172"/>
+			</line>
+			<line>
+				<reportElement x="271" y="1" width="1" height="15" uuid="05b2e989-3e2f-4a07-b9a9-5f57d599ff65"/>
+			</line>
+			<line>
+				<reportElement x="1" y="15" width="271" height="1" uuid="4d40a03c-76f5-4dd3-a116-4388c6d9071b"/>
+			</line>
+			<line>
+				<reportElement x="0" y="-20" width="1" height="21" uuid="4e2170fc-e24a-44c7-9b32-7689245195f9"/>
+			</line>
+			<line>
+				<reportElement x="97" y="-21" width="1" height="21" uuid="3ea03d0a-384d-4389-8310-e1a4ea213471"/>
+			</line>
+			<line>
+				<reportElement x="147" y="-21" width="1" height="21" uuid="e9087283-60e5-4036-b653-85f9ef0fa8d1"/>
+			</line>
+			<line>
+				<reportElement x="193" y="-21" width="1" height="22" uuid="6a322cf4-22c5-43dd-9e50-24f291792acf"/>
+			</line>
+			<line>
+				<reportElement x="231" y="-20" width="1" height="21" uuid="3b729f7e-730f-4326-bea9-d0eae54c8e09"/>
+			</line>
+			<line>
+				<reportElement x="271" y="-21" width="1" height="22" uuid="04b50a59-d97e-4870-951a-7d81c5026939"/>
+			</line>
+			<textField>
+				<reportElement x="1" y="1" width="48" height="14" uuid="a737f40d-87ae-4f15-97fd-0964fe8a50fc"/>
+				<box leftPadding="4"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true" pdfFontName="Helvetica-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{gst_Heading}+$F{gst_Tax_Rate}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="231" y="0" width="41" height="15" uuid="8c38fc3a-9fbc-4427-bbec-c14f31e0257f">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a589f7b8-eefb-45fc-8d55-081ea70213ff"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box rightPadding="2"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true" pdfFontName="Helvetica-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{totaltax}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

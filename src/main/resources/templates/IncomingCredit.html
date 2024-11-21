@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- fragment :  HeaderLinks -->
+<title>VKC | Incoming Credit Memo Forms</title>
+<div th:replace="fragments/common :: head"></div>
+
+<style>
+.card{
+box-shadow: 5px 5px 10px #C1DBFE; border-radius:10px;
+}
+
+.imp{
+color:red;}
+
+</style>
+<!--  HeaderLinks -->
+
+<body class="hold-transition  sidebar-collapse">
+	<!-- Site wrapper -->
+	<div class="wrapper">
+
+		<!-- fragment :  Navbar -->
+		<div th:replace="fragments/common :: TopNavBar ('Incoming Credit','/vkc/forms/incoming-creditmemo')"></div>
+		<!-- /.Navbar -->
+
+		<!--  fragment : Main Sidebar Container -->
+
+		<!-- Content Wrapper. Contains page content -->
+		<div class="">
+			<!-- Content Header (Page header) -->
+			<section class="content-header">
+				<div class="container">
+					<form action="/vkc/forms/incoming-creditmemo/filter" th:object="${Data}" method="POST">
+					
+			<div class="card" >
+				<div class="card-header">
+					<h3  class="card-title"><img src="/dist/img/filter1.png" height="25px;"> Smart Z-Form</h3>
+					<div class="card-tools">
+							<button type="button" class="btn btn-tool"
+								data-card-widget="collapse">
+								<i class="fas fa-minus"></i>
+							</button>
+
+						</div>
+				</div>
+				<div class="card-body">
+						<div class="row mt-3"> 
+						<div class="col-md-3">
+						<label>Document No: <span class="imp">*</span><input type="number" name="documentNo" class="form-control form-control-sm" required></label>
+						</div>
+						<div class="col-md-3">
+							<label>Company Code : <span class="imp">*</span><input type="number" name="companyCode" class="form-control form-control-sm" required></label>
+						</div>
+						<div class="col-md-3">
+							<label>Fiscal Year : <span class="imp">*</span><input type="number" name="fiscalYear" class="form-control form-control-sm" min="4" maxlength="4" required></label>
+						</div>
+						
+						
+						<div class="col-md-2" style="margin-top:10px;">
+							<button type="submit" class="btn btn-sm btn-outline-info mt-2"> <i class="fa fa-filter"></i> Generate Report </button>
+						</div>
+
+					</div>
+					
+					
+				</div>
+			</div>
+					</form>
+				</div><!-- /.container-fluid -->
+			</section>
+
+			<!-- Main content -->
+			<section class="container" th:if="!${#lists.isEmpty(reportAccess)}" >
+
+			<div class="card">
+			
+			<!-- th:data-formreport="${JasperReportTriggerJson}" onclick="GenerateReport(this);  @{'/employee/'+${user.id}}-->
+			<div class="card-header">
+				<div class="text-right"> <button type="button" class="btn btn-info">
+				<a target="_blank" th:href="@{'/vkc/forms/incoming-creditmemo/'+${data.dAccountingDocument}+'/'+${data.dFiscalYear}+'/'+${data.dCompanyCode}+'/'+generate}" style="color:white;">  <img src="/dist/img/pdf.png" height="25px;"> Generate Print Layout </a></button>
+					
+				</div>
+			</div>
+				<div class="card-body">
+					<div class="row">
+							<div class="col-md-6">
+								
+								<label>Document No:</label> <span th:text="${data.dAccountingDocument}"></span>
+							</div>
+					</div>
+					<div class="row">
+							<div class="col-md-6">
+							<label>CompanyCodeName :</label> <span class="ml-5 text-bold" th:text="${data.dCompanyCodeName}"></span>
+							</div>
+							<div class="col-md-6">
+							</div>
+					</div>
+					<hr/>
+					
+					
+					<hr/>
+					
+					<div class="row">
+							<div class="col-md-6">
+<!--								<label>SupplierName :</label> <span th:text="${data.dSupplierName}"></span>-->
+							</div>
+					</div>
+					<div class="row">
+							<div class="col-md-6">
+								<label>Address :</label> <span th:text="${data.dStreetName} +' , '+ ${data.dStreetName}"></span>
+							</div>
+					</div>
+					
+				<hr/>
+				</div>
+			
+			</div>
+
+			</section>
+			<!-- /.content -->
+		</div>
+		<!-- /.content-wrapper -->
+
+		<!--  fragment : Main Footer -->
+		<div th:replace="fragments/common :: main-footer"></div>
+		<!-- /. Main Footer -->
+
+
+		<!-- Control Sidebar -->
+		<aside class="control-sidebar control-sidebar-dark">
+			<!-- Control sidebar content goes here -->
+		</aside>
+		<!-- /.control-sidebar -->
+	</div>
+	<!-- ./wrapper -->
+
+	<!--  fragment : Footer Links -->
+	<div th:replace="fragments/common :: footer-links"></div>
+	<!-- /.  Footer Links  -->
+	
+	
+	
+	<!-- <script>
+		function GenerateReport(ele){
+			console.log(ele);
+		}
+	</script>
+	 -->
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<script>
+/* $(document).ready( function () {
+	 var table =$('table#roles').DataTable({
+			
+			
+			 ajax: {
+    url: '/api/employees/list'
+  },
+  serverSide: true,
+  responsive: true,
+  data: function(d) {
+    return JSON.stringify(d);
+  },
+columns:[
+                {data: 'id'},
+                {data: 'employeeName'},
+                {data: 'employeeName'},
+                {data: 'employeeName'},
+]
+	 })
+});
+
+*/
+$(document).ready(function () {
+	var table = $('#2').DataTable({
+		"sAjaxSource": "/api/employees/list",
+		"sAjaxDataProp": "",
+		"aoColumns": [
+			{
+				'data': 'id',
+				 "render": function (data, type,full, row) {
+			            var val=row.row+1;
+			            return val;
+			        }
+			},
+			{
+				'data': 'id',
+				'render': function (data, type, row, meta) {
+					data = '<td class="text-center" ><img src="/dist/img/preview4.png" height="25px;" data-toggle="modal"	data-target="#EmployeePreview"></td>'
+					return data;
+				}
+			},
+			{"data": "employeeName"},
+			{"data": "email"},
+			{"data": "contactNo"},
+			{
+				"data": "groupId.groupName",
+				'render': function (data, type, row, meta) {
+
+
+					if (data == null) {
+						data = '<td  style="white-space: nowrap">-</td>';
+
+					}
+					else {
+						data = '<span  style="white-space: nowrap">' + data + '</span>';
+					}
+					return data;
+				}
+			},
+			{
+				"data": "reportingTo.employeeName",
+				'render': function (data, type, row, meta) {
+
+					if (data == null) {
+						data = `<td  style="white-space: nowrap">-</td>`;
+					}
+					else {
+						data = '<span  style="white-space: nowrap">' + data + '</span>';
+					}
+					return data;
+				}
+			},
+
+			{"data": "clientName"},
+			{
+				"data": "createdOn",
+				'render': function (data, type, row, meta) {
+					let utcDate = moment(data);
+
+					data = '<span  style="white-space: nowrap">' + utcDate.format("DD-MM-YYYY HH:mm:ss") + '</span>';
+
+					return data;
+				}
+			},
+			{
+				"data": "status",
+				'render': function (data, type, row, meta) {
+
+					if (data == true) {
+						data = `<td><span class="badge badge-success">Active</span></td>`;
+					}
+					else {
+						data = '<td><span class="badge badge-danger">InActive</span></td>';
+					}
+					return data;
+				}
+			},
+
+
+		],
+        dom: "<'row'<'col-sm-4'B><'col-sm-6'><'col-sm-2'f>>" +
+        "<'row'<'col-sm-12'tr>>" +
+        "<'row'<'col-sm-4'i><'col-sm-6'><'col-sm-2'p>>",      
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+	})
+});
+
+		$(document).on("click", "#example2 tr", function () {
+			var tableDate = $(this).children("td").map(function () {
+				return $(this).text();
+			}).get();
+
+			$(".previewEmployeeId").val(tableDate[1]);	
+				$(".previewEmployeeName").text(tableDate[2]);
+				$(".EmployeeNameCP").val(tableDate[2]);
+				$(".previewEmployeeGroup").text(tableDate[6]);
+				$(".previewEmployeeReportingTo").text(tableDate[6]);
+				$(".previewEmployeeGroup").text(tableDate[5]);
+				$(".previewEmployeeEmail").text(tableDate[3]);
+				$("#previewEmployeeMobileNo").text(tableDate[4]);
+				$(".previewCompanyInfo").text(tableDate[8]);
+		});
+
+	</script>
+</body>
+
+</html>

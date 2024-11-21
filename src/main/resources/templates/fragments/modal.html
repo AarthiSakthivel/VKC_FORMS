@@ -1,0 +1,525 @@
+<!-- Branch View -->
+<div th:fragment="ClientPreview-modal">
+	<!-- Modal -->
+	<div class="modal fade" id="ClientPreview" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		<div class="modal-dialog modal-lg modal-dialog-centered"
+			role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLongTitle"><img src="/dist/img/company.png" height="25px;">  Client Information : <b><span class="previewCompanyName"></span></b></h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body" id="radioDiv">
+					<div class="card card-widget widget-user">
+						<div class="widget-user-header bg-info">
+							<h3 class="widget-user-username previewCompanyName"></h3>
+							<h5 class="widget-user-desc previewCompanyAddress"></h5>
+						</div>
+						<div class="widget-user-image">
+							<img class="img-circle elevation-2"
+								src="/dist/img/company.png" alt="User Avatar">
+						</div>
+						<div class="card-footer">
+							<div class="row">
+								<div class="col-sm-3 border-right">
+									<div class="description-block">
+										<h5 class="description-header"><i class="fa fa-user"></i> Contact Person</h5>
+										<span class="description-text previewCompanyContactPerson"></span>
+									</div>
+
+								</div>
+
+								<div class="col-sm-4 border-right">
+									<div class="description-block">
+										<h5 class="description-header"><i class="fa fa-envelope"></i> Email</h5>
+										<span class="description-text previewCompanyEmail"></span>
+									</div>
+
+								</div>
+								<div class="col-sm-2 border-right">
+									<div class="description-block">
+										<h5 class="description-header">Contact No</h5>
+										<span class="description-text previewCompanyMobileNo"></span>
+									</div>
+
+								</div>
+
+								<div class="col-sm-3">
+									<div class="description-block">
+										<h5 class="description-header">State</h5>
+										<span class="description-text previewCompanyState"></span>
+									</div>
+
+								</div>
+
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+</div>
+
+
+
+
+
+<!-- Employee View -->
+<div th:fragment="Employee-modal">
+	<!-- Modal -->
+	<div class="modal fade" id="EmployeePreview" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		<div class="modal-dialog modal-lg modal-dialog-centered"
+			role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLongTitle"><img src="/dist/img/UserA.png" height="25px;">  Employee Information : <b><span class="previewEmployeeName"></span></b></h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body" id="radioDiv">
+					<div class="card card-widget widget-user">
+
+						<div class="widget-user-header bg-info">
+							<h3 class="widget-user-username previewEmployeeName"></h3>
+							 <h5 class="widget-user-desc previewCompanyInfo"></h5>
+							
+						</div>
+						<div class="widget-user-image">
+							<img class="img-circle elevation-2"
+								src="/dist/img/UserA.png" alt="User Avatar">
+						</div>
+						<div class="card-footer">
+							<div class="row">
+							<div class="col-sm-3 border-right">
+									<div class="description-block">
+										<h5 class="description-header"><img src="/dist/img/groupCategory.png" height="25px;"> Division</h5>
+										<span class="previewEmployeeGroup"></span>
+									</div>
+
+								</div>
+
+								<div class="col-sm-3  border-right">
+									<div class="description-block">
+										<h5 class="description-header"> <img src="/dist/img/group.svg" height="25px;"> Reporting To</h5>
+										<span class="previewEmployeeReportingTo"></span>
+									</div>
+
+								</div>
+								<div class="col-sm-3 border-right">
+									<div class="description-block">
+										<h5 class="description-header"><img src="/dist/img/call.png" height="25px;"> Contact No</h5>
+										<span class="description-text" id="previewEmployeeMobileNo"></span>
+									</div>
+								</div>
+								<div class="col-sm-3">
+									<div class="description-block">
+										<h5 class="description-header"> <img src="/dist/img/Mail.png" height="25px;"> Email</h5>
+										<span class=" previewEmployeeEmail"></span>
+									</div>
+
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+</div>
+
+
+
+
+<!--  Group Edit  -->
+<div th:fragment="group-modal">
+	<div class="modal fade" id="Edit-Group-modal" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		<div class="modal-dialog modal-lg modal-dialog-centered"
+			role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLongTitle">  Group Information </h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+						<form action="/admin/edituserinfo" method="POST">
+						<div>
+								<label>Client Details :</label>
+								 <input type="text" class="form-control font-weight-bold  previewClientName" readonly>
+								  <input type="text" class="form-control font-weight-bold  previewGroupId" hidden>
+							</div>
+							<div class="mt-2">
+								<label>Group Name :</label> 
+								<input type="text" class="form-control GroupName" />
+							</div>
+							<div class="mt-2">
+								<label>Group Description :</label>
+								<input type="text" class="form-control GroupDescription" />
+							</div>
+							<div class="mt-2">
+								<label>Status :</label>
+								<select class="form-control GroupStatus">
+									<option value="true">Active</option>
+									<option value="false">In-Active</option>
+								</select>
+							</div>
+							
+							<div class="modal-footer">
+								<button type="button" class="btn btn-success mr-3" Onclick="app.model.groupUpdate();"><i class="fa fa-check"></i> Update</button>
+								<button class="btn btn-warning" data-dismiss="modal">Close</button>
+							</div>
+						</form>
+					</div>
+			</div>
+		</div>
+	</div>
+
+
+</div>
+
+
+
+
+<!--  project Type Edit  -->
+<div th:fragment="projectType-modal">
+	<div class="modal fade" id="EditTagModal" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		<div class="modal-dialog modal-lg modal-dialog-centered"
+			role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLongTitle">  Project Type Information </h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+						<form>
+							<div class="mt-2">
+								<label> Name :</label> 
+								<input type="text" class="form-control editTagName" />
+								<input type="number" class="form-control  tagId" hidden>
+							</div>
+							<div class="mt-2">
+								<label> Description :</label>
+								<input type="text" class="form-control projectTypeDescription" />
+							</div>
+							<div class="mt-2">
+								<label> Status :</label>
+								<select class="form-control EditTagStatus" >
+									<option value="true" >Active</option>
+									<option value="false" >In-Active</option>
+								</select>
+							</div>
+							
+							<div class="modal-footer">
+								<button type="button" class="btn btn-success mr-3" Onclick="app.model.tagUpdate();"><i class="fa fa-check"></i> Update</button>
+								<button class="btn btn-warning" data-dismiss="modal">Close</button>
+							</div>
+						</form>
+					</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+
+
+
+
+
+
+
+<!-- Change Password By Admin   -->
+<div th:fragment="changePassword-modal">
+	<div class="modal fade" id="EmployeePasswordChange" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		<div class="modal-dialog modal-lg modal-dialog-centered"
+			role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLongTitle"> <img src="/dist/img/password.png" height="30px;"> Change Password For : <span class="previewEmployeeName text-bold"></span> </h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+						<form>
+							<div class="mt-2">
+								<label> Name :</label> 
+								<input type="text" class="form-control EmployeeNameCP"  readonly/>
+								<input type="number" class="form-control  previewEmployeeId" hidden>
+							</div>
+							<div class="mt-2">
+								<label> Enter New Password :</label>
+								<input type="password" class="form-control NewPassword" />
+							</div>
+							
+							<div class="modal-footer">
+								<button type="button" class="btn btn-outline-success mr-3" Onclick="app.model.empPasswordChangeByAdmin();"><i class="fa fa-check"></i> Change Password</button>
+								<button class="btn btn-outline-warning" data-dismiss="modal">Close</button>
+							</div>
+						</form>
+					</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<!-- Time Log Edit -->
+<div th:fragment="TicketTimeLog-Modal">
+	<div class="modal fade" id="TimeLogEdit-modal" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		<div class="modal-dialog modal-lg modal-dialog-centered"
+			role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLongTitle"> <img src="/dist/img/edit.png" height="25px;" >  Edit Ticket Time Log </h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+						<form action="/admin/edituserinfo" method="POST">
+						<div>
+								<label><img src="/dist/img/tickets.png" height="25px;"> Ticket Details :</label>
+								 <input type="text" class="form-control font-weight-bold  ticketDetails" readonly>
+								  <input type="text" class="form-control font-weight-bold  ticketId" hidden>
+							</div>
+							<div class="row mt-3">
+							<div class="col-md-4">
+							<label><img src="/dist/img/calendar.png" height="25px;"> Log Date :</label>
+								<input type="date" id="logdate" class="form-control">
+							</div>
+							<div class="form-group col-md-4">
+								<label><img src="/dist/img/clock.png" height="25px;"> From Time :</label>
+								<div class="input-group date datetimepickerEditFromTime" data-target-input="nearest">
+									<input type="text" class="form-control datetimepicker-input ticketEditFromTime" data-target=".datetimepickerEditFromTime" />
+									<div class="input-group-append" data-target=".datetimepickerEditFromTime" data-toggle="datetimepicker">
+										<div class="input-group-text"> <i class="fa fa-clock-o"></i> </div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<label><img src="/dist/img/clock.png" height="25px;"> To Time :</label>
+								<div class="input-group date datetimepickerEditToTime" data-target-input="nearest">
+									<input type="text" class="form-control datetimepicker-input ticketEditToTime" data-target=".datetimepickerEditToTime" />
+									<div class="input-group-append" data-target=".datetimepickerEditToTime" data-toggle="datetimepicker">
+										<div class="input-group-text">
+											<i class="far fa-clock"></i>
+										</div>
+									</div>
+								</div>
+							</div>
+							</div>
+							<div class="row">
+							<div class="col-md-12">
+								<label><img src="/dist/img/remarks.png" height="25px;"> Remarks :</label>
+								<input type="text" class="form-control" id="ticketlogremarks" >
+							</div>
+							</div>
+							
+							<div class="modal-footer">
+								<button type="button" class="btn btn-success mr-3" Onclick="app.model.editTimeLog();"><i class="fa fa-check"></i> Update</button>
+								<button class="btn btn-warning" data-dismiss="modal">Close</button>
+							</div>
+						</form>
+					</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!-- New  Mail Config -->
+<div th:fragment="NewMailConfig-Modal">
+	<div class="modal fade" id="NewMailConfig-modal" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		<div class="modal-dialog modal-lg modal-dialog-centered"
+			role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLongTitle"> <img src="/dist/img/edit.png" height="25px;" >  Edit Mail Configuration </h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+						<form action="/admin/edituserinfo" method="POST">
+						<div>
+								<label> Client Details :</label>
+								 <input type="text" class="form-control font-weight-bold  ClientName" readonly>
+								  <input type="text" class="form-control font-weight-bold  LogId" hidden>
+							</div>
+							<div class="row mt-3">
+						<div class="col-md-12">
+							<label><img src="/dist/img/Mail.png" height="25px;">  To Email : <span style="color:red;">*</span></label>
+							<input type="text" class="form-control form-control-border toMail" placeholder="Enter To Email Ids">
+						</div>
+					</div>
+					<div class="row mt-2">
+						<div class="col-md-12">
+							<label><img src="/dist/img/Mail.png" height="25px;"> CC Email : </label>
+							<input type="text" class="form-control form-control-border" id="ccMail" placeholder="Enter CC Email Ids">
+						</div>
+					</div>
+							<div class="row mt-2">
+							<div class="col-md-12">
+								<label><img src="/dist/img/remarks.png" height="25px;"> Remarks :</label>
+								<input type="text" class="form-control form-control-border" id="MailConfigRemarks" >
+							</div>
+							</div>
+							
+							<div class="modal-footer">
+								<button type="button" class="btn btn-success mr-3" Onclick="app.model.editMailConfig();"><i class="fa fa-check"></i> Update</button>
+								<button class="btn btn-warning" data-dismiss="modal">Close</button>
+							</div>
+						</form>
+					</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Edit Mail Config -->
+<div th:fragment="EditMailConfig-Modal">
+	<div class="modal fade" id="EditMailConfig-modal" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		<div class="modal-dialog modal-lg modal-dialog-centered"
+			role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLongTitle"> <img src="/dist/img/edit.png" height="25px;" >  Edit Mail Configuration </h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+						<form action="/admin/edituserinfo" method="POST">
+						<div>
+								<label> Client Details :</label>
+								 <input type="text" class="form-control font-weight-bold  ClientName" readonly>
+								  <input type="text" class="form-control font-weight-bold  LogId" hidden>
+							</div>
+							<div class="row mt-3">
+						<div class="col-md-12">
+							<label><img src="/dist/img/Mail.png" height="25px;">  To Email : <span style="color:red;">*</span></label>
+							<input type="text" class="form-control form-control-border toMail" placeholder="Enter To Email Ids">
+						</div>
+					</div>
+					<div class="row mt-2">
+						<div class="col-md-12">
+							<label><img src="/dist/img/Mail.png" height="25px;"> CC Email : </label>
+							<input type="text" class="form-control form-control-border" id="ccMail" placeholder="Enter CC Email Ids">
+						</div>
+					</div>
+							<div class="row mt-2">
+							<div class="col-md-12">
+								<label><img src="/dist/img/remarks.png" height="25px;"> Remarks :</label>
+								<input type="text" class="form-control form-control-border" id="MailConfigRemarks" >
+							</div>
+							</div>
+							
+							<div class="modal-footer">
+								<button type="button" class="btn btn-success mr-3" Onclick="app.model.editMailConfig();"><i class="fa fa-check"></i> Update</button>
+								<button class="btn btn-warning" data-dismiss="modal">Close</button>
+							</div>
+						</form>
+					</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+<!-- Notifications Config - Client Wise -->
+<div th:fragment="NotificationConfig-Modal">
+	<div class="modal fade" id="NotificationConfig-modal" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		<div class="modal-dialog modal-lg modal-dialog-centered"
+			role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLongTitle"> <img src="/dist/img/notification.png" height="35px;" >   Configuration of Notifications</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+						<form action="/admin/edituserinfo" method="POST">
+						<div>
+								<label> Select Client :</label>
+								<select class="form-control clientDetails" id="clientId">
+								</select>
+							</div>
+							
+							<table class="table table-hover">
+								<thead>
+									<tr>
+										<th>Notify For The Types</th>
+										<th>Status</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr >
+										<td>Employee Creation</td>
+										<td ><input type="checkbox" id="EmployeeCreation"></td>
+									</tr>
+									<tr>
+										<td>Ticket Creation/Updation </td>
+										<td><input type="checkbox" id="TicketCreateUpdate"></td>
+									</tr>
+									<tr>
+										<td>Ticket Status Change</td>
+										<td><input type="checkbox" id="TicketAssign"></td>
+									</tr>
+									<tr>
+										<td>Comments</td>
+										<td><input type="checkbox" id="Comments"></td>
+									</tr>
+								</tbody>
+							</table>
+							
+							<div class="modal-footer">
+								<button type="button" class="btn btn-success mr-3" Onclick="app.model.saveNotificationsConfig();"><i class="fa fa-check"></i>Create / Update</button>
+								<button class="btn btn-warning" data-dismiss="modal">Close</button>
+							</div>
+						</form>
+					</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+

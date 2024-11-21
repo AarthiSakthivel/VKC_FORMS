@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.6.final using JasperReports Library version 6.20.6-5c96b6aa8a39ac1dc6b6bea4b81168e16dd39231  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="TaxableARSubReport" pageWidth="159" pageHeight="450" columnWidth="159" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="bea6d413-e9c4-4c9c-a352-4fb44e9ac1ed">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="SubReport"/>
+	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w1" value="378"/>
+	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w2" value="608"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<parameter name="documentNo" class="java.lang.String"/>
+	<parameter name="companyCode" class="java.lang.String"/>
+	<parameter name="fiscalYear" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT 
+    MIN(gst_Tax_Amount) AS gst_Tax_Amount,
+    gst_Tax_Rate
+FROM
+    debit_memo_entity_sub_report
+WHERE
+    debit_memo_entity_sub_report.document_no =$P{documentNo}
+    AND debit_memo_entity_sub_report.company_code = $P{companyCode}
+    AND debit_memo_entity_sub_report.fiscal_year =$P{fiscalYear}
+    GROUP BY
+    gst_Tax_Rate;]]>
+	</queryString>
+	<field name="gst_Tax_Rate" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="gst_Tax_Rate"/>
+		<property name="com.jaspersoft.studio.field.label" value="gst_Tax_Rate"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="debit_memo_form_sub_report"/>
+	</field>
+	<field name="gst_Tax_Amount" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="gst_Tax_Amount"/>
+		<property name="com.jaspersoft.studio.field.label" value="gst_Tax_Amount"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="debit_memo_form_sub_report"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="17" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="110" height="17" uuid="9efcaac2-4049-4209-b511-db17e565ef45"/>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Taxable value @ "+$F{gst_Tax_Rate}+"%"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="95" y="0" width="64" height="17" uuid="695510a8-4572-4cef-8be6-1cce4caf3127"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{gst_Tax_Amount} != null ? new java.text.DecimalFormat("###,###,##0.00").format($F{gst_Tax_Amount}) : "0.00"]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

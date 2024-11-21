@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.6.final using JasperReports Library version 6.20.6-5c96b6aa8a39ac1dc6b6bea4b81168e16dd39231  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="TaxableSubReport" pageWidth="272" pageHeight="100" columnWidth="272" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="c72d74d4-5b96-40db-b187-a99cbffa6c67">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter"/>
+	<property name="com.jaspersoft.studio.data.sql.tables">
+		<![CDATA[YXBfY3JlZGl0X21lbW9fY2hhbGxhbl9zdWJfcmVwb3J0ICwxNSwxNSw4MjM4ZGIwZi1kMmYxLTQ4
+YjctOWFhMS1kNThjY2VkNDNjYTc7]]>
+	</property>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="inch"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="inch"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<parameter name="companyCode" class="java.lang.String"/>
+	<parameter name="documentNo" class="java.lang.String"/>
+	<parameter name="fiscalYear" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT *
+FROM ap_credit_memo_challan_sub_report where document_no= $P{documentNo}
+AND company_code=  $P{companyCode}  AND fiscal_year= $P{fiscalYear}]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="id"/>
+		<property name="com.jaspersoft.studio.field.label" value="id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ap_credit_memo_challan_sub_report"/>
+	</field>
+	<field name="company_code" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="company_code"/>
+		<property name="com.jaspersoft.studio.field.label" value="company_code"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ap_credit_memo_challan_sub_report"/>
+	</field>
+	<field name="document_no" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="document_no"/>
+		<property name="com.jaspersoft.studio.field.label" value="document_no"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ap_credit_memo_challan_sub_report"/>
+	</field>
+	<field name="fiscal_year" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="fiscal_year"/>
+		<property name="com.jaspersoft.studio.field.label" value="fiscal_year"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ap_credit_memo_challan_sub_report"/>
+	</field>
+	<field name="taxable_Value_amount" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="taxable_Value_amount"/>
+		<property name="com.jaspersoft.studio.field.label" value="taxable_Value_amount"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ap_credit_memo_challan_sub_report"/>
+	</field>
+	<field name="overallvalue" class="java.lang.Double"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="14" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="110" height="10" uuid="7c8bf884-38da-4cca-b013-f0d0120c0e5f"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{taxable_Value_amount}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="147" y="1" width="60" height="10" uuid="2373597e-f88a-4833-85a1-cea0042631a2"/>
+				<box rightPadding="1"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true" pdfFontName="Helvetica-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{overallvalue}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="110" y="0" width="10" height="10" uuid="de41b8db-9c87-4541-aab2-de86feb23aee"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

@@ -1,0 +1,447 @@
+<!-- Branch View -->
+<div th:fragment="AddTask-Modal">
+	<!-- Modal -->
+	<div class="modal fade" id="AddTask" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+		aria-hidden="true">
+		<div class="modal-dialog modal-lg modal-dialog-centered  modal-dialog-scrollable" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLongTitle"><img src="/dist/img/company.png" height="25px;">
+						Add Task : <b><span class="previewCompanyName"></span></b></h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="container-fluid">
+						<div class="">
+							<div class="">
+								<div class="">
+									<div class="">
+										<div class="form-group row" id="HideBasedOnClickEvent">
+											<label class="col-sm-3 col-form-label"> Select Project : <span
+													style="color:red;">*</span></label>
+											<div class="col-sm-9">
+											<!--<input type="number" class="taskproject" hidden>-->
+												<select class="form-control taskproject projectIdAndNameInfo projectDetailsBasedOnRoleWise"
+													Onchange="app.model.getMileStoneListProjectSelection();app.model.getProjectContactPerson();">
+													
+												</select>
+											</div>
+										</div>
+
+										<div class="form-group row">
+											<label class="col-sm-3 col-form-label" for="project-title-input"> Task Name :
+												<span style="color:red;">*</span></label>
+											<div class="col-sm-9">
+												<input type="text" class="form-control taskName form-control-border" maxlength="220"
+													id="project-title-input" placeholder="Enter Task Name">
+													<span style="text-align:right; color:red;" id="remainingC"></span>
+											</div>
+										</div>
+										<div class="mb-1">
+											<label class="form-label"> Description : 
+											</label>
+											<textarea id="compose-textarea" class="form-control taskDescription"
+												style="height: 250px" maxlength="200"> </textarea>
+										</div>
+										<div class="form-group row">
+										<div class="col-md-6">
+																<label><img src="/dist/img/projMgnt/Stage.png" height="20px;"> Stage : <span style="color:red;">*</span></label>
+																<select	class="form-control form-control-border mileStoneInfo milestoneId"	Onchange="app.model.getCategoryListBasedOnTheProjectSelection();">
+																</select>
+															</div>
+											<div class="col-md-6">
+												<label for="inputEmail3" class="col-form-label"><img
+														src="/dist/img/assignUsers.png" height="25px;" />
+													Assign (Users) :</label>
+												<select	class="form-control taskAssignTo select2 contactPeronsInfo SelectedContactPeronsInfo"	multiple></select>
+											</div>
+										</div>
+										
+										<div class="form-group row">
+											<div class="col-md-3">
+												<label>
+													<img src="/dist/img/calendar.png" height="20px;">
+													Task Date : </label>
+												<input type="date" class="form-control" id="TaskStartDate" />
+											</div>
+											<div class="col-md-3">
+												<label><img src="/dist/img/calendar.png" height="20px;">
+													Target Date </label>
+												<input type="date" class="form-control" id="TaskTargetDate" />
+											</div>
+											<div class="col-md-6">
+												<label><img src="/dist/img/priority2.png" height="25px;">
+													Select Priority : </label>
+												<select class="form-control priorityIcon taskPriority">
+												    <option value="C" class="btn-secondary-icon">&#xf06a; Critical </option>
+													<option value="H" class="btn-danger-icon">&#xf06a; High </option>
+													<option value="M" class="btn-warning-icon" selected>&#xf06a; Medium</option>
+													<option value="L" class="btn-success-icon">&#xf06a; Low</option>
+												</select>
+											</div>
+											
+										</div>
+										
+										
+										<div class="col-12" id="accordion">
+											<div class="">
+												<a class="d-block w-100  collapsed" data-toggle="collapse"
+													href="#collapseFour">
+													<div class="card-header">
+														<h4 class="card-title ">
+															<i class="fas fa-angle-down float-left mt-1"></i> <span
+																class="ml-3"> Task Information</span>
+														</h4>
+													</div>
+												</a>
+												<div id="collapseFour" class="collapse" data-parent="#accordion">
+													<div class="card-body">
+														<div class="form-group row">
+															<div class="col-md-6">
+												<label>Billing Type :</label>
+												<select class="form-control form-control-border  taskBillableType">
+													<option value="Billable">Billable</option>
+													<option value="NonBillable">Non-Billable</option>
+												</select>
+											</div>
+															<div class="col-md-6">
+																<label> Flag : </label>
+																<select
+																	class="form-control form-control-border taskflag">
+																	<option value="Internal" class="btn-danger-icon"
+																		selected>Internal</option>
+																	<option value="External" class="btn-warning-icon">
+																		External</option>
+																</select>
+															</div>
+
+														</div>
+
+														
+														<div class="card  card shadow-none">
+															<div class="card-header">
+																<h3 class="card-title">
+																	<h3 class="card-title"><img
+																			src="/dist/img/attachemnts.png"
+																			height="20px;"> Attachments</h3>
+
+																</h3>
+															</div>
+															<div class="card-body">
+																<form class="dropzone" id="dropzoneattachment"
+																	enctype="multipart/form-data"></form>
+															</div>
+
+															<div id="preview-template" style="display: none;"></div>
+														</div>
+													</div>
+
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- end card body -->
+								</div>
+								<!-- end card -->
+							</div>
+							<!-- end col -->
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" Onclick="app.model.taskCreate()"><i class="fa fa-check"></i> Add Task</button>
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!-- MileStone Createion PopUp -->
+<div th:fragment="MileStone-Modal">
+	<!-- Modal -->
+	<div class="modal fade" id="MileStoneModal" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		<div class="modal-dialog modal-lg modal-dialog-centered"
+			role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLongTitle"><img src="/dist/img/company.png" height="25px;">  Add New Stage : </h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body" id="radioDiv">
+							<div class="mt-2">
+								<label> Stage Name :</label> 
+								<input type="text" class="form-control milestoneName" placeholder="Enter Stage Name" />
+								<input type="number" class="taskMileStoneprojectId projectId"  hidden/>
+							</div>
+							<div class="mt-2">
+								<label>Stage Description :</label>
+								<input type="text" class="form-control milestoneDescription" placeholder="Enter Stage Description"  />
+							</div>
+							<div class="mt-2">
+								<label>Target Date :</label>
+								<input type="date" class="form-control milestoneTargetDate" />
+							</div>
+							
+							<div class="modal-footer">
+								<button type="button" class="btn btn-success mr-3" Onclick="app.model.createMileStone();"><i class="fa fa-check"></i> Create</button>
+								<button class="btn btn-warning" data-dismiss="modal">Close</button>
+							</div>
+					
+					
+					
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+<div th:fragment="TaskTimeLog-Modal">
+	<div class="modal fade" id="TimeLogEdit-modal" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		<div class="modal-dialog modal-lg modal-dialog-centered"
+			role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLongTitle"> <img src="/dist/img/edit.png" height="25px;" >  Edit Task Time Log </h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+						<form action="/admin/edituserinfo" method="POST">
+						<div>
+								<label><img src="/dist/img/projMgnt/NoData2.png" height="25px;"> Task Details :</label>
+								 <input type="text" class="form-control font-weight-bold  taskDetails" readonly>
+								  <input type="text" class="form-control font-weight-bold  taskId" hidden>
+								   <input type="text" class="form-control font-weight-bold  logTableId" hidden>
+							</div>
+							<div class="row mt-3">
+							<div class="col-md-4">
+							<label><img src="/dist/img/calendar.png" height="25px;"> Log Date :</label>
+								<input type="date" id="logdate" class="form-control">
+							</div>
+							<div class="col-md-6">
+													<label><img src="/dist/img/clock.png" height="25px;"> Total Time :</label>
+													<div class="input-group date" id="totalHoursTimePicker2" data-target-input="nearest">
+												
+														<input type="text" class="form-control datetimepicker-input logHours" data-target="#totalHoursTimePicker2" />
+														<div class="input-group-append" data-target="#totalHoursTimePicker2" data-toggle="datetimepicker">
+															<div class="input-group-text">
+																<i class="far fa-clock"></i>
+															</div>
+														</div>
+													</div>
+												</div>
+							<!--<div class="form-group col-md-4">
+								<label><img src="/dist/img/clock.png" height="25px;"> From Time :</label>
+								<div class="input-group date datetimepickerEditFromTime" data-target-input="nearest">
+									<input type="text" class="form-control datetimepicker-input tasktEditFromTime" data-target=".datetimepickerEditFromTime" />
+									<div class="input-group-append" data-target=".datetimepickerEditFromTime" data-toggle="datetimepicker">
+										<div class="input-group-text"> <i class="fa fa-clock-o"></i> </div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<label><img src="/dist/img/clock.png" height="25px;"> To Time :</label>
+								<div class="input-group date datetimepickerEditToTime" data-target-input="nearest">
+									<input type="text" class="form-control datetimepicker-input taskEditToTime" data-target=".datetimepickerEditToTime" />
+									<div class="input-group-append" data-target=".datetimepickerEditToTime" data-toggle="datetimepicker">
+										<div class="input-group-text">
+											<i class="far fa-clock"></i>
+										</div>
+									</div>
+								</div>
+							</div> -->
+							</div>
+							<div class="row">
+							<div class="col-md-6">
+								<label><img src="/dist/img/ItemGroup.png" height="25px;"> Flag :</label>
+								<select class="form-control flagEdit">
+									<option value="Internal">Internal</option>
+									<option value="External">External</option>
+								</select>
+							</div>
+							<div class="col-md-6">
+								<label><img src="/dist/img/remarks.png" height="25px;"> Remarks :</label>
+								<input type="text" class="form-control" id="tasklogremarks" >
+							</div>
+							</div>
+							
+							<div class="modal-footer">
+								<button type="button" class="btn btn-success mr-3" Onclick="app.model.editTimeLog();"><i class="fa fa-check"></i> Update</button>
+								<button class="btn btn-warning" data-dismiss="modal">Close</button>
+							</div>
+						</form>
+					</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<!--Log Hours Or StartTime & End Time-->
+
+<div th:fragment="Timesheet-Modal">
+	<div class="modal fade" id="TimesheetModal" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		<div class="modal-dialog modal-lg modal-dialog-centered"
+			role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLongTitle"><img src="/dist/img/projMgnt/time.png" height="25px;">  Add Timesheet  </h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body" id="radioDiv">
+				<div class="row">
+					<div class="col-md-6">
+						<label><img src="/dist/img/projMgnt/project.png" height="20px;"> Select Project</label>
+						<select class="projectDetailsBasedOnRoleWise form-control" Onchange="app.model.getTaskListBasedOnProjectWise();">
+						</select>
+					</div>
+					<div class="col-md-6">
+						<label><img src="/dist/img/projMgnt/taskImage.png" height="20px;">  Select Task <img src="/dist/img/info1.png" height="15px;" data-toggle="tooltip" title="List out Task List Info relates to Status of Open, InProgress, Hold, ClientToConfirm"></label>
+						<select class="TaskDetailsBasedOnProjectWise getTaskIdForFetchTaskDetails form-control">
+						</select>
+					</div>
+				</div>	
+				<div class="row mt-2">
+						<div class="col-md-6">
+													<label><img src="/dist/img/calendar.png" height="25px;"> Date</label>
+													<input type="date" class="form-control taskLogDate" id="dateValidation">
+												</div>
+												
+												<div class="col-md-6 HoursTimeFormat">
+													<label><img src="/dist/img/clock.png" height="25px;"> Total Time :</label>
+													<div class="input-group date" id="totalHoursTimePicker" data-target-input="nearest">
+												
+														<input type="text" class="form-control datetimepicker-input totalHours" data-target="#totalHoursTimePicker" />
+														<div class="input-group-append" data-target="#totalHoursTimePicker" data-toggle="datetimepicker">
+															<div class="input-group-text">
+																<i class="far fa-clock"></i>
+															</div>
+														</div>
+													</div>
+													<small><a href="#" Onclick="app.model.TriggerTimeFormat('Hours');">Set Start & End Time ?</a></small>
+												</div>
+											 
+												<div class="form-group col-md-3 StartEndTimeFormat" style="display: none;">
+													<label><img src="/dist/img/clock.png" height="25px;"> From Time :</label>
+													<div class="input-group date datetimepicker3" data-target-input="nearest">
+														<input type="text" class="form-control datetimepicker-input taskFromTime"
+															data-target=".datetimepicker3" />
+														<div class="input-group-append" data-target=".datetimepicker3" data-toggle="datetimepicker">
+															<div class="input-group-text"> <i class="fa fa-clock-o"></i> </div>
+														</div>
+													</div>
+												</div>
+												<div class="col-md-3 StartEndTimeFormat" style="display: none;">
+													<label><img src="/dist/img/clock.png" height="25px;"> To Time :</label>
+													<div class="input-group date" id="timepicker" data-target-input="nearest">
+											
+														<input type="text" class="form-control datetimepicker-input taskToTime" data-target="#timepicker" />
+														<div class="input-group-append" data-target="#timepicker" data-toggle="datetimepicker">
+															<div class="input-group-text">
+																<i class="far fa-clock"></i>
+															</div>
+														</div>
+													</div>
+													<small><a href="#" Onclick="app.model.TriggerTimeFormat('StartEnd');">Add Hours ?</a></small>
+												</div>
+				</div>		
+				
+							<div class="row">
+								<div class="col-md-4">
+													<label><img src="/dist/img/projMgnt/flag1.png" height="25px;"> Flag</label>
+													<select class="form-control flag">
+														<option value="Internal">Internal</option>
+														<option value="External">External</option>
+													</select>
+												</div>
+												<div class="col-md-8">
+													<label><img src="/dist/img/remarks.png" height="25px;"> Remarks :</label>
+													<input type="text" class="form-control logHoursRemarks" placeholder="Enter Log Remarks" />
+												</div>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-success mr-3" Onclick="app.model.saveTaskTimeLog();"><i class="fa fa-check"></i> Add Time Log</button>
+								<button class="btn btn-warning" data-dismiss="modal">Close</button>
+							</div>
+					
+					
+					
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<!-- Stage Edit PopUp -->
+<div th:fragment="StageEdit-Modal">
+	<!-- Modal -->
+	<div class="modal fade" id="StageEditModal" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		<div class="modal-dialog modal-lg modal-dialog-centered"
+			role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLongTitle"><img src="/dist/img/edit.png" height="25px;">  Edit Stage Details For  : <span class="EditStageNameHeader text-bold"></span></h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body" id="radioDiv">
+							<div class="mt-2">
+								<label> Stage Name :</label> 
+								<input type="text" class="form-control EditStageName" placeholder="Enter Stage Name" />
+								<input type="number" class="EditStageId"  hidden/>
+							</div>
+							<div class="mt-2">
+								<label>Stage Description :</label>
+								<input type="text" class="form-control EditStageDesc" placeholder="Enter Stage Description"  />
+							</div>
+							<div class="mt-2">
+								<label>Target Date :</label>
+								<input type="date" class="form-control EditStageTargetDate" />
+							</div>
+							
+							<div class="modal-footer">
+								<button type="button" class="btn btn-success mr-3" Onclick="app.model.updateMileStone();"><i class="fa fa-check"></i> Update</button>
+								<button class="btn btn-warning" data-dismiss="modal">Close</button>
+							</div>
+					
+					
+					
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

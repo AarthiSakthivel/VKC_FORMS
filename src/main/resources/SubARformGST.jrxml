@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.6.final using JasperReports Library version 6.20.6-5c96b6aa8a39ac1dc6b6bea4b81168e16dd39231  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SubAPFormGST" pageWidth="390" pageHeight="96" columnWidth="390" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="94c1d238-6931-486b-b8e1-459c9f247741">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="SubReport"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w1" value="345"/>
+	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w2" value="641"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="387"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="602"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<parameter name="companyCode" class="java.lang.String"/>
+	<parameter name="documentNo" class="java.lang.String"/>
+	<parameter name="fiscalYear" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT  
+    MAX(sgst_amount) AS sgst_amount,
+    MAX(cgst_amount) AS cgst_amount,
+    MAX(igst_amount) AS igst_amount,
+    gst_Tax_Rate,
+    MAX(heading) AS heading,
+    MAX(totaltax) AS totaltax
+FROM  
+    debit_memo_entity_sub_report
+WHERE   
+    debit_memo_entity_sub_report.document_no = $P{documentNo}
+    AND debit_memo_entity_sub_report.company_code = $P{companyCode}
+    AND debit_memo_entity_sub_report.fiscal_year = $P{fiscalYear}
+GROUP BY     
+    gst_Tax_Rate;]]>
+	</queryString>
+	<field name="sgst_amount" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="sgst_amount"/>
+		<property name="com.jaspersoft.studio.field.label" value="sgst_amount"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="debit_memo_form_sub_report"/>
+	</field>
+	<field name="cgst_amount" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="cgst_amount"/>
+		<property name="com.jaspersoft.studio.field.label" value="cgst_amount"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="debit_memo_form_sub_report"/>
+	</field>
+	<field name="igst_amount" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="igst_amount"/>
+		<property name="com.jaspersoft.studio.field.label" value="igst_amount"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="debit_memo_form_sub_report"/>
+	</field>
+	<field name="gst_Tax_Rate" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="gst_Tax_Rate"/>
+		<property name="com.jaspersoft.studio.field.label" value="gst_Tax_Rate"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="debit_memo_form_sub_report"/>
+	</field>
+	<field name="totaltax" class="java.lang.Double"/>
+	<field name="heading" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="26">
+			<line>
+				<reportElement x="0" y="0" width="390" height="1" uuid="18abb18f-834e-4a55-9067-422bce64d3e7"/>
+			</line>
+			<line>
+				<reportElement x="0" y="21" width="390" height="1" uuid="2a1951bd-b20a-4694-a741-44d670b3144c"/>
+			</line>
+			<line>
+				<reportElement x="390" y="0" width="1" height="26" uuid="662ac716-c833-45e4-b9de-be5921773893"/>
+			</line>
+			<line>
+				<reportElement x="80" y="0" width="1" height="25" uuid="79dba392-d3db-4cde-afa1-cb49dfa864b0"/>
+			</line>
+			<line>
+				<reportElement x="143" y="0" width="1" height="25" uuid="c2bacff8-768f-41f6-8d19-62265b566941"/>
+			</line>
+			<line>
+				<reportElement x="206" y="0" width="1" height="25" uuid="b741efe4-61c1-4b86-b35a-ecbe023ad851"/>
+			</line>
+			<line>
+				<reportElement x="265" y="0" width="1" height="25" uuid="ab926ba3-ac18-491a-84e8-22bea64a5414"/>
+			</line>
+			<line>
+				<reportElement x="322" y="1" width="1" height="24" uuid="f9bee997-2601-4253-85c5-af17d37a461f"/>
+			</line>
+			<staticText>
+				<reportElement x="5" y="5" width="69" height="12" uuid="4b4651f1-519e-4747-9361-ea90fe5e41b7"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<text><![CDATA[Total Breakup]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="94" y="5" width="42" height="12" uuid="5d9dee3d-851e-42c2-9132-725cab1f8998"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<text><![CDATA[SGST]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="151" y="6" width="48" height="11" uuid="9c9ed9f2-868d-4934-9660-1195d096a6c3"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<text><![CDATA[CGST]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="213" y="6" width="42" height="11" uuid="0b9d65c1-2df1-4a06-89aa-fd2379c51f9e"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<text><![CDATA[IGST]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="275" y="5" width="40" height="12" uuid="c5201e4c-20e9-478d-8f6e-f1695bda4455"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<text><![CDATA[UTGST]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="329" y="6" width="55" height="11" uuid="09f844d9-585d-4e25-b540-a8b8ba9ee839"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<text><![CDATA[Total Tax]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="19">
+			<line>
+				<reportElement x="390" y="-10" width="1" height="29" uuid="59664f3a-4d41-4fac-aa29-3c452f5ca898"/>
+			</line>
+			<line>
+				<reportElement x="0" y="-25" width="1" height="27" uuid="636e509c-e47d-4e11-9bcc-e552ff2d9b72"/>
+			</line>
+			<line>
+				<reportElement x="0" y="-11" width="1" height="30" uuid="461fa2bc-dfeb-410a-b766-faf01ef7b866"/>
+			</line>
+			<line>
+				<reportElement x="0" y="18" width="390" height="1" uuid="c0109c79-312a-4d5c-9266-554a4ea0816c"/>
+			</line>
+			<line>
+				<reportElement x="80" y="-11" width="1" height="29" uuid="49bfff07-2def-4a5d-8058-b74d3f379b97"/>
+			</line>
+			<line>
+				<reportElement x="143" y="-10" width="1" height="28" uuid="8b7ade75-f90e-432e-aaa2-cd9e45214c3f"/>
+			</line>
+			<line>
+				<reportElement x="206" y="-11" width="1" height="29" uuid="624b5004-a88e-4da1-82ae-7c0c09b3d075"/>
+			</line>
+			<line>
+				<reportElement x="265" y="-11" width="1" height="29" uuid="c7ddec2c-bb37-48ce-937d-c9ab4e003a7f"/>
+			</line>
+			<line>
+				<reportElement x="322" y="-12" width="1" height="30" uuid="b39b475a-3f7e-42c2-8469-72219876429b"/>
+			</line>
+			<textField>
+				<reportElement x="93" y="1" width="42" height="13" uuid="3fb1dd97-4c76-464a-9ccc-f8515df9a24c">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7016b924-07be-4a30-a1d9-707feb33eaa6"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sgst_amount} != null ? new java.text.DecimalFormat("###,###,##0.00").format($F{sgst_amount}) : "0.00"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="151" y="1" width="48" height="13" uuid="215cd734-f8a5-489a-9d77-50700aa84a0a">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="cc2ea3af-eb49-434a-a39e-aace7155e915"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cgst_amount} != null ? new java.text.DecimalFormat("###,###,##0.00").format($F{cgst_amount}) : "0.00"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="213" y="1" width="42" height="13" uuid="1e02d23c-1d5a-4a12-bd76-8d970586443d">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="27b2b22f-38c5-4826-b3ba-0f35b247c2cd"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{igst_amount} != null ? new java.text.DecimalFormat("###,###,##0.00").format($F{igst_amount}) : "0.00"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="329" y="5" width="55" height="13" uuid="a9087443-b799-4582-81ff-13ae636127f3">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ee26f136-2e3b-4e86-a419-8131d764de51"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{totaltax} != null ? new java.text.DecimalFormat("###,###,##0.00").format($F{totaltax}) : "0.00"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="5" y="1" width="68" height="13" uuid="55243a7c-9457-4262-bebf-56ac2397216e"/>
+				<textElement textAlignment="Left">
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{heading}+" "+$F{gst_Tax_Rate}+"%"]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

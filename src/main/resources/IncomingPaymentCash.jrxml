@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.6.final using JasperReports Library version 6.20.6-5c96b6aa8a39ac1dc6b6bea4b81168e16dd39231  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="AP Credit Memo_Service" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7ae85aa4-00ef-43e9-b38b-1f836989c531">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<parameter name="companyName" class="java.lang.String"/>
+	<parameter name="supplierName" class="java.lang.String"/>
+	<parameter name="documentNo" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select * from incoming_payment_form where accounting_document = $P{documentNo}]]>
+	</queryString>
+	<field name="company_code_name" class="java.lang.String"/>
+	<field name="amount_in_company_code_currency" class="java.lang.Double"/>
+	<field name="total_amount" class="java.lang.Double"/>
+	<field name="region" class="java.lang.String"/>
+	<field name="country" class="java.lang.String"/> 
+	<field name="accounting_document_header_text" class="java.lang.String"/>
+	<field name="gl_header_account_name" class="java.lang.String"/>
+	<field name="gl_line_account_name" class="java.lang.String"/>
+	<field name="posting_date" class="java.util.Date"/>
+	<field name="total_amount_in_words" class="java.lang.String"/>
+	<field name="accounting_document" class="java.lang.String"/>
+	<field name="concatenated_datas" class="java.lang.String"/>
+	<field name="village_name" class="java.lang.String"/>
+	<field name="header_name" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="179" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="144" width="553" height="1" uuid="458fe4cd-d62f-4e42-9b2a-9ce2a4d1f3f4"/>
+			</line>
+			<line>
+				<reportElement x="0" y="176" width="553" height="1" uuid="072e8ff8-87bf-4905-ab82-6c474971a09f"/>
+			</line>
+			<textField>
+				<reportElement x="0" y="2" width="554" height="20" uuid="0ec5e542-0da6-4df9-8c6f-f59e07f5f742"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="9.5" isBold="true" pdfFontName="Helvetica-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{company_code_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="44" width="554" height="20" uuid="e911e9b0-43ea-4258-b8c8-61ad978c475c"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{region}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="64" width="554" height="16" uuid="86fb4875-31b0-45f8-9b2e-f264ad1ed9f5"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{country}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="4" y="125" width="26" height="19" uuid="9312f49b-48f2-49b0-97e5-e66b9ec55c14"/>
+				<textElement>
+					<font fontName="Arial" size="9" isBold="true" pdfFontName="Helvetica-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[No :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="450" y="125" width="45" height="19" uuid="f69918a6-9462-4cdb-95d3-dd722b28373d"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="9" isBold="true" pdfFontName="Helvetica-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Dated   :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="88" y="155" width="100" height="16" uuid="2ae1290c-4957-48e2-8e05-bbd5747909bf"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8.5" isBold="true" pdfFontName="Helvetica-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Particulars]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="447" y="155" width="100" height="16" uuid="a8ae3e60-ee38-4f8a-8690-b351e9036221"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8.5" isBold="true" pdfFontName="Helvetica-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Amount]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="29" y="125" width="120" height="19" uuid="a519d27a-4f4c-47c8-a1d3-5890d40e417c"/>
+				<textElement>
+					<font fontName="Arial" size="9" isBold="true" pdfFontName="Helvetica-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{accounting_document}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="470" y="125" width="83" height="19" uuid="c9cdc855-fbb8-4715-94da-f33528d2909a"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="9" isBold="true" pdfFontName="Helvetica-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new
+java.text.SimpleDateFormat("dd-MM-yyyy").format(
+$F{posting_date}
+)]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="24" width="554" height="20" uuid="a523fdce-e6d5-4f5f-8ed0-ccffd7601ca6"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{concatenated_datas}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="429" y="145" width="1" height="32" uuid="14f6de2f-e927-43ac-a12d-ddc2269c0407"/>
+			</line>
+			<textField>
+				<reportElement x="0" y="82" width="554" height="14" uuid="8219fb5b-883d-493b-b4d4-c8a0c2034de5"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA["CIN :"+$F{village_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="98" width="554" height="20" uuid="66e58a4a-53da-4e6f-ae9f-708bd9cb44c7"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="9" isBold="true" pdfFontName="Helvetica-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{header_name}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="130" splitType="Stretch">
+			<textField>
+				<reportElement x="12" y="2" width="170" height="19" uuid="9aed6572-6d38-4e5d-bae8-4a3b2d21f742"/>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{gl_header_account_name}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="30" width="70" height="19" uuid="7bd11902-4665-4d71-9306-b4a9d9ef08aa"/>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<text><![CDATA[Through :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="12" y="54" width="170" height="19" uuid="86ac7e65-803f-4c2c-9c1f-87e4fe029834"/>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{gl_line_account_name}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="80" width="79" height="19" uuid="4863537f-a9f8-4ac5-9003-cb4b479d676e"/>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<text><![CDATA[On Account of :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="12" y="105" width="188" height="19" uuid="4d1abc99-a9e2-49c4-8776-0de1ec0a03eb"/>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{accounting_document_header_text}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="458" y="49" width="83" height="19" uuid="8945c8b7-88b1-4c77-918e-e11c91866282"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="9" isBold="true" pdfFontName="Helvetica-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{amount_in_company_code_currency} != null ? new java.text.DecimalFormat("###,###,##0.00").format($F{amount_in_company_code_currency}) : "0.00"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="240" y="105" width="100" height="18" uuid="f55e6955-9dc8-49c5-8522-341d3d3e070a"/>
+				<textFieldExpression><![CDATA["RS." +
+new java.text.DecimalFormat("###,###,##0.00").format($F{amount_in_company_code_currency} != null ? $F{amount_in_company_code_currency} : 0)
++ "/-"]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="140">
+			<staticText>
+				<reportElement x="0" y="10" width="100" height="20" uuid="bcf4c38a-9ad4-45c0-8d84-d72b2a90f3e9"/>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<text><![CDATA[Amount(in words) :]]></text>
+			</staticText>
+			<line>
+				<reportElement x="429" y="-164" width="1" height="205" uuid="24f3d576-ee1f-4565-bfff-0e0a1712cf49"/>
+			</line>
+			<line>
+				<reportElement x="429" y="0" width="125" height="1" uuid="761d667b-403b-4c39-926a-78a6921f70f3"/>
+			</line>
+			<line>
+				<reportElement x="429" y="42" width="125" height="1" uuid="6f6621a0-7861-4e0b-88a4-b79f11dd5dec"/>
+			</line>
+			<textField>
+				<reportElement x="12" y="42" width="405" height="19" uuid="18215310-3bd1-4d6e-8ac6-f1c4c16b45b9"/>
+				<textElement textAlignment="Left">
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{total_amount_in_words}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="458" y="13" width="83" height="20" uuid="e328c98f-3496-41aa-a6cd-f9a4fa40f595"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="9" isBold="true" pdfFontName="Helvetica-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{total_amount} != null ? new java.text.DecimalFormat("###,###,##0.00").format($F{total_amount}) : "0.00"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="70" width="164" height="20" uuid="de2a01ed-e996-41a2-b1d5-adb847ff4859"/>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<text><![CDATA[Receiver's Name & Signature:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="120" width="100" height="20" uuid="6937269b-439c-4fe7-8ffd-b8b9bbb8eac2"/>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<text><![CDATA[Checked by :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="417" y="70" width="100" height="20" uuid="76ad4636-893f-4ec8-a3b7-b5d6fb32acb9"/>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<text><![CDATA[Authorised Signatory :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="417" y="120" width="100" height="20" uuid="2ab14953-8f90-44f4-8b8a-f9a7e2d1c07b"/>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<text><![CDATA[Verfied by:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="429" y="0" width="1" height="42" uuid="9034aa65-372e-4848-9bbd-78b991253656"/>
+			</line>
+		</band>
+	</summary>
+</jasperReport>
+ 
